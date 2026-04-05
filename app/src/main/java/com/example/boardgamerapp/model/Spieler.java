@@ -1,9 +1,9 @@
 package com.example.boardgamerapp.model;
 
 public class Spieler {
-    public int id;
-    public String name;
-    public int turnusPosition;
+    private int id;
+    private String name;
+    private int turnusPosition;
 
     public Spieler (int id, String name, int turnusPosition) {
         this.id = id;

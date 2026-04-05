@@ -1,10 +1,10 @@
 package com.example.boardgamerapp.model;
 
 public class SpielVoting {
-    int id;
-    int spielerId;
-    int spielId;
-    int abendId;
+    private int id;
+    private int spielerId;
+    private int spielId;
+    private int abendId;
 
     public int getId() {
         return id;

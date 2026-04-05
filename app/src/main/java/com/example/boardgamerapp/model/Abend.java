@@ -1,10 +1,10 @@
 package com.example.boardgamerapp.model;
 
 public class Abend {
-    int id;
-    String zeit;
-    String datum;
-    int gastgeberId;
+    private int id;
+    private String zeit;
+    private String datum;
+    private int gastgeberId;
 
     public Abend(int id, String zeit, String date, int gastgeberId) {
         this.id = id;

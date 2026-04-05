@@ -1,12 +1,12 @@
 package com.example.boardgamerapp.model;
 
 public class AbendBewertung {
-    int id;
-    int abendId;
-    int spielerId;
-    int essenSterne;
-    int abendSterne;
-    int gastgeberSterne;
+    private int id;
+    private int abendId;
+    private int spielerId;
+    private int essenSterne;
+    private int abendSterne;
+    private int gastgeberSterne;
 
     public AbendBewertung(int id, int abendId, int spielerId) {
         this.id = id;
