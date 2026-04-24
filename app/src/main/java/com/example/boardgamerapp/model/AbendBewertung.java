@@ -1,6 +1,23 @@
 package com.example.boardgamerapp.model;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "abend_bewertung",
+foreignKeys = {
+        @ForeignKey(entity = Abend.class, parentColumns = "id", childColumns = "abendId"),
+        @ForeignKey(entity = Spieler.class, parentColumns = "id", childColumns = "spielerId")
+        },
+        indices = {
+                @Index("abendId"),
+                @Index("spielerId")
+        }
+)
 public class AbendBewertung {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private int abendId;
     private int spielerId;
@@ -8,13 +25,14 @@ public class AbendBewertung {
     private int abendSterne;
     private int gastgeberSterne;
 
+    @Ignore
     public AbendBewertung(int id, int abendId, int spielerId) {
         this.id = id;
         this.abendId = abendId;
         this.spielerId = spielerId;
     }
 
-    public AbendBewertung(int id, int abendId, int spielerId, int essenSterne, int abendSterne, int gastgeberSterne) {
+    public AbendBewertung(int abendId, int spielerId, int essenSterne, int abendSterne, int gastgeberSterne) {
         this.id = id;
         this.abendId = abendId;
         this.spielerId = spielerId;

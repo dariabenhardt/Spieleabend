@@ -1,12 +1,27 @@
 package com.example.boardgamerapp.model;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Index;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "abend",
+foreignKeys = @ForeignKey(
+        entity = Spieler.class,
+        parentColumns = "id",
+        childColumns = "gastgeberId",
+        onDelete = ForeignKey.SET_NULL
+),
+        indices = {@Index("gastgeberId")}
+)
 public class Abend {
+    @PrimaryKey(autoGenerate = true)
     private int id;
     private String zeit;
     private String datum;
     private int gastgeberId;
 
-    public Abend(int id, String zeit, String date, int gastgeberId) {
+    public Abend(String zeit, String datum, int gastgeberId) {
         this.id = id;
         this.zeit = zeit;
         this.datum = datum;

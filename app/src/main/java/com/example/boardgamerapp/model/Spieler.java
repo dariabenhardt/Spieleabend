@@ -1,11 +1,16 @@
 package com.example.boardgamerapp.model;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "spieler")
 public class Spieler {
+    @PrimaryKey (autoGenerate = true)
     private int id;
     private String name;
     private int turnusPosition;
 
-    public Spieler (int id, String name, int turnusPosition) {
+    public Spieler (String name, int turnusPosition) {
         this.id = id;
         this.name = name;
         this.turnusPosition = turnusPosition;
