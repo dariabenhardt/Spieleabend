@@ -1,5 +1,6 @@
 package com.example.boardgamerapp.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -19,7 +20,7 @@ public interface AbendBewertungDao {
     void update(AbendBewertung bewertung);
 
     @Query("SELECT * FROM abend_bewertung WHERE abendId = :abendId")
-    List<AbendBewertung> getByAbend(int abendId);
+    LiveData<List<AbendBewertung>> getByAbend(int abendId);
 
     @Query("SELECT AVG(essenSterne) FROM abend_bewertung WHERE abendId = :abendId")
     float getDurchschnittEssen(int abendId);

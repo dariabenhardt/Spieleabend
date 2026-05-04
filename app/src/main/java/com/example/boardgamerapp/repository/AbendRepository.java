@@ -2,6 +2,8 @@ package com.example.boardgamerapp.repository;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.boardgamerapp.database.AbendDao;
 import com.example.boardgamerapp.database.AppDatabase;
 import com.example.boardgamerapp.model.Abend;
@@ -18,7 +20,7 @@ public class AbendRepository {
         dao = AppDatabase.getInstance(context).abendDao();
     }
 
-    public List<Abend> getAlleAbende()            { return dao.getAll(); }
+    public LiveData<List<Abend>> getAlleAbende()            { return dao.getAll(); }
     public Abend getAbendById(int id)            { return dao.getById(id); }
     public void hinzufuegen(Abend a)               { dao.insert(a); }
     public void aktualisieren(Abend a)             { dao.update(a); }

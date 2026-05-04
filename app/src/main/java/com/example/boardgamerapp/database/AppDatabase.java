@@ -2,13 +2,17 @@ package com.example.boardgamerapp.database;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.boardgamerapp.model.*;
 
 import com.example.boardgamerapp.model.Abend;
+
+import java.util.concurrent.Executors;
 
 @Database(
         entities = {
@@ -18,7 +22,8 @@ import com.example.boardgamerapp.model.Abend;
                 SpielVoting.class,
                 AbendBewertung.class
         },
-                version = 1
+        version = 2,
+        exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
 
@@ -39,7 +44,32 @@ public abstract class AppDatabase extends RoomDatabase {
                             AppDatabase.class,
                             "boardgamer.db"
                     )
-                    .allowMainThreadQueries() // ← nur zum Einstieg, später entfernen!
+                    .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration() // ← DB wird bei Änderungen neu erstellt
+                    .addCallback(new RoomDatabase.Callback() {
+                        @Override
+                        public void onCreate(SupportSQLiteDatabase db) {
+                            super.onCreate(db);
+                            Executors.newSingleThreadExecutor().execute(() -> {
+
+                                // 1. Spieler Testdaten
+                                SpielerDao spielerDao = instance.spielerDao();
+                                long id1 = spielerDao.insert(new Spieler("Max", 1, "Hauptstraße 5"));
+                                long id2 = spielerDao.insert(new Spieler("Lisa", 2, "Goethestraße 17"));
+                                long id3 = spielerDao.insert(new Spieler("Tom", 3, "Frankfurter Straße 57"));
+
+                                // 2. Abende
+                                AbendDao abendDao = instance.abendDao();
+                                //Vergangene Abende
+                                abendDao.insert(new Abend("18:00", "2025-05-10", (int) id1));
+                                abendDao.insert(new Abend("19:00", "2025-06-15", (int) id2));
+                                abendDao.insert(new Abend("20:00", "2025-07-20", (int) id3));
+                                //Zukünftige Abende
+                                abendDao.insert(new Abend("20:00", "2026-03-10", (int) id3));
+                                abendDao.insert(new Abend("18:30", "2026-02-15", (int) id1));
+                            });
+                        }
+                    })
                     .build();
         }
         return instance;

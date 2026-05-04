@@ -1,5 +1,6 @@
 package com.example.boardgamerapp.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -22,7 +23,7 @@ public interface AbendDao {
     void delete(Abend abend);
 
     @Query("SELECT * FROM abend ORDER BY datum ASC")
-    List<Abend> getAll();
+    LiveData<List<Abend>> getAll();
 
     @Query("SELECT * FROM abend WHERE datum >= :heute ORDER BY datum ASC LIMIT 1")
     Abend getNaechstenAbend(String heute);

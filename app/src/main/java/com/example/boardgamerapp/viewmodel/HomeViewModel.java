@@ -1,7 +1,10 @@
 package com.example.boardgamerapp.viewmodel;
 
 import android.app.Application;
+
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Transformations;
 
 import com.example.boardgamerapp.model.Abend;
 import com.example.boardgamerapp.model.Spieler;
@@ -15,29 +18,35 @@ import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class HomeViewModel extends AndroidViewModel {
+
     private AbendRepository abendRepo;
     private SpielerRepository spielerRepo;
     private String heute;
+
+    public LiveData<List<Abend>> bevorstehendAbende;
+    public LiveData<List<Abend>> vergangeneAbende;
 
     public HomeViewModel(Application application) {
         super(application);
         abendRepo   = new AbendRepository(application);
         spielerRepo = new SpielerRepository(application);
         heute = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-    }
 
-    // Bevorstehende Abende (Datum >= heute)
-    public List<Abend> getBevorstehendAbende() {
-        return abendRepo.getAlleAbende().stream()
-                .filter(a -> a.getDatum().compareTo(heute) >= 0)
-                .collect(Collectors.toList());
-    }
+        LiveData<List<Abend>> alleAbende = abendRepo.getAlleAbende();
 
-    // Vergangene Abende (Datum < heute)
-    public List<Abend> getVergangeneAbende() {
-        return abendRepo.getAlleAbende().stream()
-                .filter(a -> a.getDatum().compareTo(heute) < 0)
-                .collect(Collectors.toList());
+        // Filtert Abende >= heute
+        bevorstehendAbende = Transformations.map(alleAbende, liste ->
+                liste.stream()
+                        .filter(a -> a.getDatum().compareTo(heute) >= 0)
+                        .collect(Collectors.toList())
+        );
+
+        // Filtert Abende < heute
+        vergangeneAbende = Transformations.map(alleAbende, liste ->
+                liste.stream()
+                        .filter(a -> a.getDatum().compareTo(heute) < 0)
+                        .collect(Collectors.toList())
+        );
     }
 
     // Gastgebername für einen Abend
@@ -46,9 +55,14 @@ public class HomeViewModel extends AndroidViewModel {
         return s != null ? s.getName() : "Unbekannt";
     }
 
-    // Aktuell eingeloggter Spieler (später erweiterbar)
+    // Aktuell eingeloggter Spieler (erster Spieler in der DB)
     public Spieler getAktuellerSpieler() {
         List<Spieler> alle = spielerRepo.getAlleSpieler();
         return alle.isEmpty() ? null : alle.get(0);
+    }
+
+    // Nächsten Abend direkt abrufen
+    public Abend getNaechstenAbend() {
+        return abendRepo.getNaechstenAbend();
     }
 }

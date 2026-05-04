@@ -9,11 +9,13 @@ public class Spieler {
     private int id;
     private String name;
     private int turnusPosition;
+    private String adresse;
 
-    public Spieler (String name, int turnusPosition) {
+    public Spieler (String name, int turnusPosition, String adresse) {
         this.id = id;
         this.name = name;
         this.turnusPosition = turnusPosition;
+        this.adresse = adresse;
     }
 
     public int getId() {
@@ -39,4 +41,7 @@ public class Spieler {
     public void setTurnusPosition(int turnusPosition) {
         this.turnusPosition = turnusPosition;
     }
+
+    public String getAdresse() { return adresse; }
+    public void setAdresse(String adresse) { this.adresse = adresse; }
 }
