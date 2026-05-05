@@ -1,6 +1,9 @@
 package com.example.boardgamerapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -52,6 +55,15 @@ public class MainActivity extends AppCompatActivity {
         // Vergangene Abende beobachten
         viewModel.vergangeneAbende.observe(this, liste -> {
             adapterVergangen.setAbendListe(liste);
+        });
+
+        LinearLayout newEventButton = findViewById(R.id.new_event_button);
+        newEventButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, NewEventActivity.class);
+                startActivity(intent);
+            }
         });
     }
 }
