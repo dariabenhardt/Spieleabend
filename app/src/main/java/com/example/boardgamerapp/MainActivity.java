@@ -32,5 +32,14 @@ public class MainActivity extends AppCompatActivity {
                startActivity(intent);
             }
         });
+
+        Button ratingButton2 = findViewById(R.id.rating_button2);
+        ratingButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RateEventActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
