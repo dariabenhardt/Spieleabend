@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvEventTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Spieleabend bei Robin"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+        <ImageView
+            android:id="@+id/btnClose"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="#000000" />
+
+    </LinearLayout>
+
+    <!-- Event Info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:id="@+id/tvEventDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Datum: 16.04.2026"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvEventTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Uhrzeit: 18:00 Uhr"
+            android:textSize="16sp"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+    <!-- Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Vorgeschlagene Spiele Überschrift -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vorgeschlagene Spiele"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Spiele Liste -->
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Exploding Kittens"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Monopoly"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Uno"
+                android:textSize="16sp"
+                android:layout_marginBottom="12dp" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scrabble"
+                android:textSize="16sp"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Weitere Spiele Button -->
+            <Button
+                android:id="@+id/btnWeitereSpiele"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Weitere Spiele vorschlagen"
+                android:textColor="#000000"
+                android:backgroundTint="#F0F0F0"
+                app:cornerRadius="8dp"
+                android:layout_marginBottom="16dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Vote Button -->
+    <Button
+        android:id="@+id/btnVoteAbsenden"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vote absenden"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#05031C"
+        app:cornerRadius="8dp"
+        android:layout_margin="16dp" />
+
+</LinearLayout>

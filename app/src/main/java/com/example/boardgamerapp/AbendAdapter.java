@@ -108,8 +108,16 @@ public class AbendAdapter extends RecyclerView.Adapter<AbendAdapter.AbendViewHol
                     Intent intent = new Intent(context, RateEventActivity.class);
                     context.startActivity(intent);
                 } else {
-                    // Zur EventActivity
-                    Toast.makeText(context, "Mehr Infos für " + gastgeber.getName(), Toast.LENGTH_SHORT).show();
+                    // Zur EventDetailsActivity
+                    Intent intent = new Intent(context, EventDetailsActivity.class);
+
+                    // Event-Daten mitgeben:
+                    intent.putExtra("eventName", "Spieleabend bei " + gastgeber.getName());
+                    intent.putExtra("eventDate", abend.getDatum());
+                    intent.putExtra("eventTime", abend.getZeit());
+                    intent.putExtra("eventLocation", gastgeber.getAdresse());
+
+                    context.startActivity(intent);
                 }
             }
         });
