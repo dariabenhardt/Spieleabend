@@ -65,8 +65,8 @@ public abstract class AppDatabase extends RoomDatabase {
                                 abendDao.insert(new Abend("19:00", "2025-06-15", (int) id2));
                                 abendDao.insert(new Abend("20:00", "2025-07-20", (int) id3));
                                 //Zukünftige Abende
-                                abendDao.insert(new Abend("20:00", "2026-03-10", (int) id3));
-                                abendDao.insert(new Abend("18:30", "2026-02-15", (int) id1));
+                                abendDao.insert(new Abend("20:00", "2026-06-10", (int) id3));
+                                abendDao.insert(new Abend("18:30", "2026-07-15", (int) id1));
                             });
                         }
                     })

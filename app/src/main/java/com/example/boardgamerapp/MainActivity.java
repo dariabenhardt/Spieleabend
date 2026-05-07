@@ -27,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rvVergangen = findViewById(R.id.rvVergangen);
 
         // Adapter erstellen
-        AbendAdapter adapterBevorstehend = new AbendAdapter(this, null);
-        AbendAdapter adapterVergangen = new AbendAdapter(this, null);
+        AbendAdapter adapterBevorstehend = new AbendAdapter(this, null, false);
+        AbendAdapter adapterVergangen = new AbendAdapter(this, null, true);
 
         // RecyclerViews einrichten
         rvBevorstehend.setLayoutManager(new LinearLayoutManager(this));
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             adapterVergangen.setAbendListe(liste);
         });
 
+        // Neuer Termin
         LinearLayout newEventButton = findViewById(R.id.new_event_button);
         newEventButton.setOnClickListener(new View.OnClickListener() {
             @Override
