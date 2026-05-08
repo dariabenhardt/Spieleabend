@@ -111,7 +111,7 @@ public class AbendAdapter extends RecyclerView.Adapter<AbendAdapter.AbendViewHol
                     // Zur EventDetailsActivity
                     Intent intent = new Intent(context, EventDetailsActivity.class);
 
-                    // Event-Daten mitgeben:
+                    // Event-Daten mitgeben
                     intent.putExtra("eventName", "Spieleabend bei " + gastgeber.getName());
                     intent.putExtra("eventDate", abend.getDatum());
                     intent.putExtra("eventTime", abend.getZeit());

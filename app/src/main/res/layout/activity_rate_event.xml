@@ -7,221 +7,251 @@
     android:background="#EDEEFF"
     android:padding="16dp">
 
+    <!-- Wrapper -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Details zum Spieltermin -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Spieleabend bei Jenny"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Datum: 02.04.2026"
-            android:textSize="16sp"
-            android:textColor="#000000" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Uhrzeit: 20:00 Uhr"
-            android:textSize="16sp"
-            android:textColor="#000000"
-            android:layout_marginBottom="32dp" />
-
-        <!-- Gastgeber Bewertung -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bewerte den Gastgeber"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Sterne für Gastgeber -->
+        <!-- Header -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:gravity="center_vertical"
+            android:paddingBottom="16dp"
+            android:orientation="horizontal" >
+
+            <!-- Titel -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Spieleabend bei Jenny"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline" />
+                android:id="@+id/btnClose"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                app:tint="#000000" />
 
         </LinearLayout>
 
-        <!-- Textfeld für Gastgeber-Bewertung -->
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:hint="Beschreibung"
-            android:gravity="top"
-            android:background="@drawable/ratingtext_background"
-            android:padding="16dp"
-            android:layout_marginBottom="32dp" />
-
-        <!-- Essen Bewertung -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bewerte das Essen"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Sterne für Essen -->
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:orientation="vertical"
+>
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
+            <!-- Details zum Spieltermin -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Datum: 02.04.2026"
+                android:textColor="#000000"
+                android:textSize="16sp" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:text="Uhrzeit: 20:00 Uhr"
+                android:textColor="#000000"
+                android:textSize="16sp" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
+            <!-- Gastgeber Bewertung -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Bewerte den Gastgeber"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
+            <!-- Sterne für Gastgeber -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline" />
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_star_outline" />
+
+            </LinearLayout>
+
+            <!-- Textfeld für Gastgeber-Bewertung -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/ratingtext_background"
+                android:gravity="top"
+                android:hint="Beschreibung"
+                android:padding="16dp" />
+
+            <!-- Essen Bewertung -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Bewerte das Essen"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Sterne für Essen -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_star_outline" />
+
+            </LinearLayout>
+
+            <!-- Textfeld für Essen -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="32dp"
+                android:background="#FFFFFF"
+                android:gravity="top"
+                android:hint="Beschreibung"
+                android:padding="16dp" />
+
+            <!-- Gesamten Abend Bewertung-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Bewerte den gesamten Abend"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Sterne für gesamten Abend -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_star_outline" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_star_outline" />
+
+            </LinearLayout>
+
+            <!-- Textfeld für gesamten Abend -->
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginBottom="32dp"
+                android:background="#FFFFFF"
+                android:gravity="top"
+                android:hint="Beschreibung"
+                android:padding="16dp" />
+
+            <!-- Bewertung abschicken -->
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginBottom="48dp"
+                android:backgroundTint="#05031C"
+                android:text="Bewertung abschicken"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="12dp" />
 
         </LinearLayout>
-
-        <!-- Textfeld für Essen -->
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:hint="Beschreibung"
-            android:gravity="top"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="32dp" />
-
-        <!-- Gesamten Abend Bewertung-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bewerte den gesamten Abend"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#000000"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Sterne für gesamten Abend -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline"
-                android:layout_marginEnd="8dp" />
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_star_outline" />
-
-        </LinearLayout>
-
-        <!-- Textfeld für gesamten Abend -->
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:hint="Beschreibung"
-            android:gravity="top"
-            android:background="#FFFFFF"
-            android:padding="16dp"
-            android:layout_marginBottom="32dp" />
-
-        <!-- Bewertung abschicken -->
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="Bewertung abschicken"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#05031C"
-            app:cornerRadius="12dp"
-            android:layout_marginBottom="48dp"/>
 
     </LinearLayout>
+
 </ScrollView>
