@@ -120,6 +120,7 @@
 
         <!-- Gastgeber auslosen Button -->
         <Button
+            android:id="@+id/btnGastgeberAuslosen"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="Gastgeber auslosen"
@@ -154,6 +155,7 @@
                     android:layout_marginBottom="8dp" />
 
                 <EditText
+                    android:id="@+id/etUhrzeit"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="Uhrzeit eingeben"
@@ -178,6 +180,7 @@
                     android:layout_marginBottom="8dp" />
 
                 <EditText
+                    android:id="@+id/etDatum"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:hint="Datum eingeben"
@@ -199,6 +202,7 @@
 
         <!-- Spiele wählen Button -->
         <Button
+            android:id="@+id/btnSpieleWaehlen"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="Spiele wählen"
@@ -211,6 +215,7 @@
 
         <!-- Termin erstellen Button -->
         <Button
+            android:id="@+id/btnTerminErstellen"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:text="Termin erstellen"

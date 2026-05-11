@@ -2,6 +2,8 @@ package com.example.boardgamerapp.repository;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.boardgamerapp.database.AppDatabase;
 import com.example.boardgamerapp.database.SpielVotingDao;
 import com.example.boardgamerapp.model.SpielVoting;
@@ -15,7 +17,7 @@ public class SpielVotingRepository {
         dao = AppDatabase.getInstance(context).spielVotingDao();
     }
 
-    public List<SpielVoting> getVotingsForAbend(int abendId) { return dao.getByAbend(abendId); }
+    public LiveData<List<SpielVoting>> getVotingsForAbend(int abendId) { return dao.getByAbend(abendId); }
     public void hinzufuegen(SpielVoting v)                   { dao.insert(v); }
 
     public int getGewinnerSpielId(int abendId) {

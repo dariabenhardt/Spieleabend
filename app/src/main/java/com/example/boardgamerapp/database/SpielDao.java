@@ -1,5 +1,6 @@
 package com.example.boardgamerapp.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -19,7 +20,7 @@ public interface SpielDao {
     void delete(Spiel spiel);
 
     @Query("SELECT * FROM spiel")
-    List<Spiel> getAll();
+    LiveData<List<Spiel>> getAll();
 
     @Query("SELECT * FROM spiel WHERE vorschlagVon = :spielerId")
     List<Spiel> getByVorschlaeger(int spielerId);
