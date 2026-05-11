@@ -1,6 +1,9 @@
 package com.example.boardgamerapp;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +22,31 @@ public class EventDetailsActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        // Views finden
+        TextView tvEventTitle = findViewById(R.id.tvEventTitle);
+        TextView tvEventDate = findViewById(R.id.tvEventDate);
+        TextView tvEventTime = findViewById(R.id.tvEventTime);
+        ImageView btnClose = findViewById(R.id.btnClose);
+
+        // putExtra-Daten auslesen
+        String eventName = getIntent().getStringExtra("eventName");
+        String eventDate = getIntent().getStringExtra("eventDate");
+        String eventTime = getIntent().getStringExtra("eventTime");
+        String eventLocation = getIntent().getStringExtra("eventLocation");
+
+        // Daten anzeigen
+        tvEventTitle.setText(eventName);
+        tvEventDate.setText("Datum: " + eventDate);
+        tvEventTime.setText("Uhrzeit: " + eventTime + " Uhr");
+
+        // Close-Button
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Schließt die Activity
+            }
         });
     }
 }
