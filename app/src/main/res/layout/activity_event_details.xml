@@ -87,32 +87,11 @@
                 android:layout_marginBottom="16dp" />
 
             <!-- Spiele Liste -->
-            <CheckBox
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSpiele"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Exploding Kittens"
-                android:textSize="16sp"
-                android:layout_marginBottom="12dp" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Monopoly"
-                android:textSize="16sp"
-                android:layout_marginBottom="12dp" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Uno"
-                android:textSize="16sp"
-                android:layout_marginBottom="12dp" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scrabble"
-                android:textSize="16sp"
+                android:nestedScrollingEnabled="false"
                 android:layout_marginBottom="24dp" />
 
             <!-- Weitere Spiele Button -->

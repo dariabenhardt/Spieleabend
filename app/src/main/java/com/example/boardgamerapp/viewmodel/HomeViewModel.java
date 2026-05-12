@@ -34,17 +34,21 @@ public class HomeViewModel extends AndroidViewModel {
 
         LiveData<List<Abend>> alleAbende = abendRepo.getAlleAbende();
 
-        // Filtert Abende >= heute
+        // Filtert Abende >= heute, begrenzt auf 2
         bevorstehendAbende = Transformations.map(alleAbende, liste ->
                 liste.stream()
                         .filter(a -> a.getDatum().compareTo(heute) >= 0)
+                        .sorted((a1, a2) -> a1.getDatum().compareTo(a2.getDatum()))
+                        .limit(2)
                         .collect(Collectors.toList())
         );
 
-        // Filtert Abende < heute
+        // Filtert Abende < heute, begrenzt auf 3
         vergangeneAbende = Transformations.map(alleAbende, liste ->
                 liste.stream()
                         .filter(a -> a.getDatum().compareTo(heute) < 0)
+                        .sorted((a1, a2) -> a2.getDatum().compareTo(a1.getDatum()))
+                        .limit(3)
                         .collect(Collectors.toList())
         );
     }

@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
                 SpielVoting.class,
                 AbendBewertung.class
         },
-        version = 2,
+        version = 4,
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
@@ -64,9 +64,19 @@ public abstract class AppDatabase extends RoomDatabase {
                                 abendDao.insert(new Abend("18:00", "2025-05-10", (int) id1));
                                 abendDao.insert(new Abend("19:00", "2025-06-15", (int) id2));
                                 abendDao.insert(new Abend("20:00", "2025-07-20", (int) id3));
+                                abendDao.insert(new Abend("20:00", "2026-03-20", (int) id1));
                                 //Zukünftige Abende
                                 abendDao.insert(new Abend("20:00", "2026-06-10", (int) id3));
                                 abendDao.insert(new Abend("18:30", "2026-07-15", (int) id1));
+                                abendDao.insert(new Abend("18:30", "2026-06-01", (int) id2));
+
+                                // 3. Spiele
+                                SpielDao spielDao = instance.spielDao();
+                                spielDao.insert(new Spiel("Exploding Kittens", (int) id1));
+                                spielDao.insert(new Spiel("Azul", (int) id2));
+                                spielDao.insert(new Spiel("Cards Against Humanity", (int) id3));
+                                spielDao.insert(new Spiel("Dixit", (int) id3));
+                                spielDao.insert(new Spiel("Werwolf", (int) id2));
                             });
                         }
                     })

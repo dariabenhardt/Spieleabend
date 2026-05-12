@@ -11,8 +11,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.boardgamerapp.model.Spiel;
 import com.example.boardgamerapp.model.Spieler;
+import com.example.boardgamerapp.repository.SpielRepository;
 import com.example.boardgamerapp.viewmodel.HomeViewModel;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -56,6 +60,14 @@ public class MainActivity extends AppCompatActivity {
         viewModel.vergangeneAbende.observe(this, liste -> {
             adapterVergangen.setAbendListe(liste);
         });
+
+        // Testen ob Spiele in DB sind
+        SpielRepository spielRepo = new SpielRepository(this);
+        List<Spiel> alleSpiele = spielRepo.getAlleSpiele();
+        System.out.println("Anzahl Spiele in DB: " + alleSpiele.size());
+        for (Spiel s : alleSpiele) {
+            System.out.println("Spiel: " + s.getName());
+        }
 
         // Neuer Termin
         LinearLayout newEventButton = findViewById(R.id.new_event_button);

@@ -10,6 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.boardgamerapp.model.Spiel;
+import com.example.boardgamerapp.repository.SpielRepository;
+
+import java.util.List;
 
 public class EventDetailsActivity extends AppCompatActivity {
 
@@ -48,5 +55,17 @@ public class EventDetailsActivity extends AppCompatActivity {
                 finish(); // Schließt die Activity
             }
         });
+
+        // Spiele-RecyclerView einrichten
+        RecyclerView rvSpiele = findViewById(R.id.rvSpiele);
+        SpielRepository spielRepo = new SpielRepository(this);
+
+        // Spiele aus Datenbank holen
+        List<Spiel> alleSpiele = spielRepo.getAlleSpiele();
+
+        // Adapter erstellen und setzen
+        SpielAdapter spielAdapter = new SpielAdapter(this, alleSpiele);
+        rvSpiele.setLayoutManager(new LinearLayoutManager(this));
+        rvSpiele.setAdapter(spielAdapter);
     }
 }
