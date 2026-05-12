@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Testen ob Spiele in DB sind
         SpielRepository spielRepo = new SpielRepository(this);
-        List<Spiel> alleSpiele = spielRepo.getAlleSpiele();
+        List<Spiel> alleSpiele = spielRepo.getAlleSpieleSync();
         System.out.println("Anzahl Spiele in DB: " + alleSpiele.size());
         for (Spiel s : alleSpiele) {
             System.out.println("Spiel: " + s.getName());

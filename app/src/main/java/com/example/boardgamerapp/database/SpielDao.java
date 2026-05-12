@@ -22,6 +22,9 @@ public interface SpielDao {
     @Query("SELECT * FROM spiel")
     LiveData<List<Spiel>> getAll();
 
+    @Query("SELECT * FROM spiel")
+    List<Spiel> getAllSync();
+
     @Query("SELECT * FROM spiel WHERE vorschlagVon = :spielerId")
     List<Spiel> getByVorschlaeger(int spielerId);
 }

@@ -61,7 +61,7 @@ public class EventDetailsActivity extends AppCompatActivity {
         SpielRepository spielRepo = new SpielRepository(this);
 
         // Spiele aus Datenbank holen
-        List<Spiel> alleSpiele = spielRepo.getAlleSpiele();
+        List<Spiel> alleSpiele = spielRepo.getAlleSpieleSync();
 
         // Adapter erstellen und setzen
         SpielAdapter spielAdapter = new SpielAdapter(this, alleSpiele);
