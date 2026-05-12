@@ -26,8 +26,12 @@ public interface AbendDao {
     LiveData<List<Abend>> getAll();
 
     @Query("SELECT * FROM abend WHERE datum >= :heute ORDER BY datum ASC LIMIT 1")
-    Abend getNaechstenAbend(String heute);
+    LiveData<Abend> getNaechstenAbend(String heute);
 
     @Query("SELECT * FROM abend WHERE id = :id")
-    Abend getById(int id);
+    LiveData<Abend> getById(int id);
+
+    @Query("SELECT * FROM abend ORDER BY datum DESC LIMIT 1")
+    Abend getLetzten();
+
 }

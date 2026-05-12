@@ -21,14 +21,18 @@ public class AbendRepository {
     }
 
     public LiveData<List<Abend>> getAlleAbende()            { return dao.getAll(); }
-    public Abend getAbendById(int id)            { return dao.getById(id); }
+    public LiveData<Abend> getAbendById(int id)            { return dao.getById(id); }
     public void hinzufuegen(Abend a)               { dao.insert(a); }
     public void aktualisieren(Abend a)             { dao.update(a); }
     public void loeschen(Abend a)           { dao.delete(a); }
 
-    public Abend getNaechstenAbend() {
+    public LiveData<Abend> getNaechstenAbend() {
         String heute = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
                 .format(new Date());
         return dao.getNaechstenAbend(heute);
     }
+    public Abend getLetztenAbend() {
+        return dao.getLetzten();
+    }
+
 }

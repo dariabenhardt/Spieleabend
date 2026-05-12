@@ -66,7 +66,7 @@ public class HomeViewModel extends AndroidViewModel {
     }
 
     // Nächsten Abend direkt abrufen
-    public Abend getNaechstenAbend() {
+    public LiveData<Abend> getNaechstenAbend() {
         return abendRepo.getNaechstenAbend();
     }
 }

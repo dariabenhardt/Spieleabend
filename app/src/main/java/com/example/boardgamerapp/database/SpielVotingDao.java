@@ -1,6 +1,7 @@
 
 package com.example.boardgamerapp.database;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -16,7 +17,7 @@ public interface SpielVotingDao {
     void insert(SpielVoting voting);
 
     @Query("SELECT * FROM spiel_voting WHERE abendId = :abendId")
-    List<SpielVoting> getByAbend(int abendId);
+    LiveData<List<SpielVoting>> getByAbend(int abendId);
 
     // Gewinner: Spiel mit meisten Votes
     @Query("SELECT spielId FROM spiel_voting WHERE abendId = :abendId " +

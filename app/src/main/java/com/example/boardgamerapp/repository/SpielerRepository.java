@@ -3,6 +3,8 @@ package com.example.boardgamerapp.repository;
 
 import android.content.Context;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.boardgamerapp.database.AppDatabase;
 import com.example.boardgamerapp.database.SpielerDao;
 import com.example.boardgamerapp.model.Spieler;
@@ -22,8 +24,27 @@ public class SpielerRepository {
     public void aktualisieren(Spieler s)             { dao.update(s); }
     public void loeschen(Spieler s)                  { dao.delete(s); }
 
-    public Spieler getNaechsterGastgeber() {
-        List<Spieler> alle = dao.getAll(); // sortiert nach turnusPosition
-        return alle.isEmpty() ? null : alle.get(0);
+    public Spieler getNaechsterGastgeber(int letzterGastgeberId) {
+        List<Spieler> alle = dao.getAll(); // sortiert nach turnusPosition ASC
+        if (alle.isEmpty()) return null;
+
+        // Letzte turnusPosition finden
+        int letztePosition = 0;
+        for (Spieler s : alle) {
+            if (s.getId() == letzterGastgeberId) {
+                letztePosition = s.getTurnusPosition();
+                break;
+            }
+        }
+
+        // Nächsten Spieler im Turnus suchen
+        for (Spieler s : alle) {
+            if (s.getTurnusPosition() > letztePosition) {
+                return s; // nächster in der Reihe
+            }
+        }
+
+        // Am Ende der Liste → wieder von vorne (Rundum-Turnus)
+        return alle.get(0);
     }
 }
