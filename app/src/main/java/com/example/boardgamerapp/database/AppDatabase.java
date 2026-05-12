@@ -22,7 +22,7 @@ import java.util.concurrent.Executors;
                 SpielVoting.class,
                 AbendBewertung.class
         },
-        version = 4,
+        version = 5,
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {
@@ -61,22 +61,39 @@ public abstract class AppDatabase extends RoomDatabase {
                                 // 2. Abende
                                 AbendDao abendDao = instance.abendDao();
                                 //Vergangene Abende
-                                abendDao.insert(new Abend("18:00", "2025-05-10", (int) id1));
-                                abendDao.insert(new Abend("19:00", "2025-06-15", (int) id2));
-                                abendDao.insert(new Abend("20:00", "2025-07-20", (int) id3));
-                                abendDao.insert(new Abend("20:00", "2026-03-20", (int) id1));
+                                long event1Id = abendDao.insert(new Abend("18:00", "2025-05-10", (int) id1));
+                                long event2Id = abendDao.insert(new Abend("19:00", "2025-06-15", (int) id2));
+                                long event3Id = abendDao.insert(new Abend("20:00", "2025-07-20", (int) id3));
+                                long event4Id = abendDao.insert(new Abend("20:00", "2026-03-20", (int) id1));
                                 //Zukünftige Abende
-                                abendDao.insert(new Abend("20:00", "2026-06-10", (int) id3));
-                                abendDao.insert(new Abend("18:30", "2026-07-15", (int) id1));
-                                abendDao.insert(new Abend("18:30", "2026-06-01", (int) id2));
+                                long event5Id = abendDao.insert(new Abend("20:00", "2026-06-10", (int) id3));
+                                long event6Id = abendDao.insert(new Abend("18:30", "2026-07-15", (int) id1));
+                                long event7Id =abendDao.insert(new Abend("18:30", "2026-06-01", (int) id2));
 
                                 // 3. Spiele
                                 SpielDao spielDao = instance.spielDao();
-                                spielDao.insert(new Spiel("Exploding Kittens", (int) id1));
-                                spielDao.insert(new Spiel("Azul", (int) id2));
-                                spielDao.insert(new Spiel("Cards Against Humanity", (int) id3));
-                                spielDao.insert(new Spiel("Dixit", (int) id3));
-                                spielDao.insert(new Spiel("Werwolf", (int) id2));
+                                long spiel1Id = spielDao.insert(new Spiel("Exploding Kittens", (int) id1));
+                                long spiel2Id = spielDao.insert(new Spiel("Azul", (int) id2));
+                                long spiel3Id = spielDao.insert(new Spiel("Cards Against Humanity", (int) id3));
+                                long spiel4Id = spielDao.insert(new Spiel("Dixit", (int) id3));
+                                long spiel5Id = spielDao.insert(new Spiel("Werwolf", (int) id2));
+                                long spiel6Id = spielDao.insert(new Spiel("Monopoly", (int) id1));
+
+
+                                // 4. SpielVotings hinzufügen
+                                SpielVotingDao votingDao = instance.spielVotingDao();
+
+                                votingDao.insert(new SpielVoting((int) id1, (int) spiel1Id, (int) event5Id));
+                                votingDao.insert(new SpielVoting((int) id2, (int) spiel2Id, (int) event5Id));
+                                votingDao.insert(new SpielVoting((int) id3, (int) spiel3Id, (int) event5Id));
+
+                                votingDao.insert(new SpielVoting((int) id1, (int) spiel5Id, (int) event6Id));
+                                votingDao.insert(new SpielVoting((int) id3, (int) spiel6Id, (int) event6Id));
+
+                                votingDao.insert(new SpielVoting((int) id2, (int) spiel3Id, (int) event7Id));
+                                votingDao.insert(new SpielVoting((int) id2, (int) spiel4Id, (int) event7Id));
+                                votingDao.insert(new SpielVoting((int) id1, (int) spiel5Id, (int) event7Id));
+
                             });
                         }
                     })

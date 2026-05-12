@@ -18,6 +18,9 @@ public class SpielVotingRepository {
     }
 
     public LiveData<List<SpielVoting>> getVotingsForAbend(int abendId) { return dao.getByAbend(abendId); }
+    public List<SpielVoting> getVotingsForAbendSync(int abendId) {
+        return dao.getByAbendSync(abendId);
+    }
     public void hinzufuegen(SpielVoting v)                   { dao.insert(v); }
 
     public int getGewinnerSpielId(int abendId) {

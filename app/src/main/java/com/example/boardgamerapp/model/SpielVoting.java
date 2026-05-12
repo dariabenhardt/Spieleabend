@@ -57,8 +57,7 @@ public class SpielVoting {
         this.abendId = abendId;
     }
 
-    public SpielVoting(int id, int spielerId, int spielId, int abendId) {
-        this.id = id;
+    public SpielVoting(int spielerId, int spielId, int abendId) {
         this.spielerId = spielerId;
         this.spielId = spielId;
         this.abendId = abendId;

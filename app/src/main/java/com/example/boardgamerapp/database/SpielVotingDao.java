@@ -19,6 +19,9 @@ public interface SpielVotingDao {
     @Query("SELECT * FROM spiel_voting WHERE abendId = :abendId")
     LiveData<List<SpielVoting>> getByAbend(int abendId);
 
+    @Query("SELECT * FROM spiel_voting WHERE abendId = :abendId")
+    List<SpielVoting> getByAbendSync(int abendId);
+
     // Gewinner: Spiel mit meisten Votes
     @Query("SELECT spielId FROM spiel_voting WHERE abendId = :abendId " +
             "GROUP BY spielId ORDER BY COUNT(*) DESC LIMIT 1")

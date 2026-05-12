@@ -117,6 +117,8 @@ public class AbendAdapter extends RecyclerView.Adapter<AbendAdapter.AbendViewHol
                     intent.putExtra("eventTime", abend.getZeit());
                     intent.putExtra("eventLocation", gastgeber.getAdresse());
 
+                    intent.putExtra("eventId", abend.getId());
+
                     context.startActivity(intent);
                 }
             }
